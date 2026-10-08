@@ -51,3 +51,17 @@ document.addEventListener('click',e=>{const menu=e.target.closest('.menu-toggle'
 document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close()}}));
 document.querySelector('#help-search')?.addEventListener('input',e=>{document.querySelector('#help-results').innerHTML=helpCards(e.target.value);document.querySelector('#help-count').textContent=`${document.querySelectorAll('#help-results .info-card').length} matching topics`});
 document.querySelectorAll('[data-form]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(f);const content=`MyBooking ${f.dataset.form} enquiry\nName: ${d.get('name')}\nEmail: ${d.get('email')}\nTopic: ${d.get('topic')}\n\n${d.get('message')}\n`;const url=URL.createObjectURL(new Blob([content],{type:'text/plain'}));const out=f.querySelector('.form-result');out.replaceChildren();const msg=document.createElement('p');msg.textContent='Your enquiry is prepared, but has not been sent. Download it to keep a copy.';const link=document.createElement('a');link.href=url;link.download='mybooking-enquiry.txt';link.textContent='Download enquiry ↗';out.append(msg,link);link.addEventListener('click',()=>setTimeout(()=>URL.revokeObjectURL(url),1000),{once:true})}));
+
+// Reveal once as content enters the viewport; honor live motion preferences.
+const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
+let revealObserver;
+function initializeReveals(){
+  revealObserver?.disconnect();
+  const targets=document.querySelectorAll('.section-heading,.info-card,.blog-card,.service-card,.trust-art,.trust-copy,.provider-section>div,.home-faq>div,.editorial-split>*,.steps-list article');
+  targets.forEach(el=>el.classList.remove('reveal-ready','is-revealed'));
+  if(motionPreference.matches||!('IntersectionObserver' in window))return;
+  revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-revealed');revealObserver.unobserve(entry.target)}}),{threshold:.08});
+  targets.forEach((el,i)=>{el.style.setProperty('--reveal-delay',`${Math.min(i%3*65,130)}ms`);el.classList.add('reveal-ready');revealObserver.observe(el)});
+}
+initializeReveals();
+motionPreference.addEventListener('change',initializeReveals);
