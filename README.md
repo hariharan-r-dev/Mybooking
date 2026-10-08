@@ -32,3 +32,9 @@ This is a marketing prototype, not a connected marketplace. Booking and professi
 The hero image is AI-generated editorial artwork and does not represent a real customer or provider. Plus Jakarta Sans is distributed under the included SIL Open Font License.
 
 Requested references: Mangomint's medical spa page and Boulevard's homepage. Both reference sites’ HTML and styles were inspected during the typography revision. Mangomint declares TT Commons Pro, TT Commons Mono, and IvyPresto Display; Boulevard declares Basis Grotesque Pro, Rework Headline, DM Sans, and Roboto Mono. MyBooking retains its own locally hosted Plus Jakarta Sans rather than copying commercial font assets. Typography uses 16px body copy, 14px navigation and controls, 12px uppercase labels, relaxed heading tracking, and a responsive display scale.
+
+## Vercel deployment
+
+Import `hariharan-r-dev/Mybooking`, select the `main` branch, and keep Root Directory at `./`. The checked-in `vercel.json` selects Vite, builds with `npm run build`, serves `dist`, and rewrites the 13 named subpages to `index.html` so opening or refreshing a direct page URL works. Static assets and unknown paths are not rewritten.
+
+After changing settings, redeploy the latest commit. If `/` itself returns Vercel's `404 NOT_FOUND`, inspect the deployment build logs and confirm the domain is attached to a successful deployment; subpage rewrites alone cannot resolve a missing deployment.
