@@ -1,6 +1,6 @@
 # MyBooking marketing website
 
-A responsive 14-page marketing website for the planned MyBooking beauty marketplace. Built with Vite and vanilla JavaScript. Uses charcoal `#2A2A2A`, sky blue `#87CEEB`, white, and locally hosted Plus Jakarta Sans. The italic editorial accent uses Georgia.
+A responsive 14-page marketing website for the planned MyBooking beauty marketplace. Built with Vite and vanilla JavaScript. Uses charcoal `#2A2A2A`, sky blue `#87CEEB`, white, and locally hosted Plus Jakarta Sans. Plus Jakarta Sans is used consistently for display headings, body copy, and controls; no secondary italic font is used.
 
 ## Development
 
@@ -31,4 +31,4 @@ This is a marketing prototype, not a connected marketplace. Booking and professi
 
 The hero image is AI-generated editorial artwork and does not represent a real customer or provider. Plus Jakarta Sans is distributed under the included SIL Open Font License.
 
-Requested references: Mangomint's medical spa page and Boulevard's homepage. Access to both domains was denied by the current egress policy during implementation, so exact visual comparison is still outstanding. The implementation uses an original editorial beauty layout rather than claiming an inspected reproduction.
+Requested references: Mangomint's medical spa page and Boulevard's homepage. Both reference sites’ HTML and styles were inspected during the typography revision. Mangomint declares TT Commons Pro, TT Commons Mono, and IvyPresto Display; Boulevard declares Basis Grotesque Pro, Rework Headline, DM Sans, and Roboto Mono. MyBooking retains its own locally hosted Plus Jakarta Sans rather than copying commercial font assets. Typography uses 16px body copy, 14px navigation and controls, 12px uppercase labels, relaxed heading tracking, and a responsive display scale.
